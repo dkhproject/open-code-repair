@@ -1,8 +1,16 @@
 # Open Code Repair
 
-A cross-platform maintenance tool for the **[Open Code](https://github.com/opencode-io/opencode)** desktop app. Diagnoses and fixes common problems — sessions/workspaces that won't delete, log accumulation, cache bloat, orphaned data — and can reset the app to a factory-fresh state.
+[![npm version](https://img.shields.io/npm/v/open-code-repair?color=blue&label=npm)](https://www.npmjs.com/package/open-code-repair)
+[![npm downloads](https://img.shields.io/npm/dm/open-code-repair?label=downloads)](https://www.npmjs.com/package/open-code-repair)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D22-green)](https://nodejs.org/)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)](#requirements)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![CI](https://github.com/dkhproject/open-code-repair/workflows/CI/badge.svg)](https://github.com/dkhproject/open-code-repair/actions)
 
-> **Unofficial community tool.** Not affiliated with or endorsed by the Open Code authors. It only touches app *data* (database, caches, local state), never the app binaries. Use at your own risk; automatic backups are taken before any destructive action.
+> **Cross-platform maintenance & repair tool for the [Open Code](https://github.com/opencode-io/opencode) desktop app.**
+> Fixes stuck sessions, workspace issues, cache bloat, log accumulation, orphaned data — and resets to factory-fresh state.
+
+**Unofficial community tool.** Not affiliated with or endorsed by the Open Code authors. It only touches app *data* (database, caches, local state), never the app binaries. Use at your own risk; automatic backups are taken before any destructive action.
 
 ---
 
@@ -109,6 +117,29 @@ oc-repair delete-workspace --workspace QzpcVXNlcnNc.1wf4p7a
 oc-repair factory-reset
 oc-repair restore --backup-path "C:\Users\me\AppData\Roaming\Open Design\oc-repair-backups\opencode\20261123-185526-manual"
 ```
+
+---
+
+## Common Issues This Tool Fixes
+
+These are the most frequently reported problems in the Open Code community:
+
+| Issue | Symptoms | Root Cause |
+|-------|----------|------------|
+| **"Delete does nothing" / deleted sessions reappear** | Session/workspace seems to stay after clicking Delete | Renderer cache (HTTP cache, LocalStorage, IndexedDB) holds stale "ghost" references. Database delete succeeds, but UI restores from cache. |
+| **Orphan workspaces/sessions** | Workspace/session appears in UI but data missing on disk | External tool or crash removed data on disk, but database rows remain. |
+| **Stuck runs** | Run shows "running" status indefinitely | Process crashed mid-run; status never updated to failed/completed. |
+| **Log accumulation** | Hundreds of log folders consuming disk space | Each session creates a log folder; old ones never cleaned up. |
+| **Cache corruption after update/crash** | UI shows stale data, missing workspaces, or glitches | Renderer caches (Cache, GPUCache, LocalStorage, etc.) become inconsistent after app update or crash. |
+
+This tool addresses all of the above:
+
+- `doctor` → Diagnoses all issues above (read-only, safe)
+- `fix` → Clears renderer caches, vacuums database, removes stale logs
+- `clear-ui-state` → Targeted cache/LocalStorage clearing for "delete does nothing"
+- `delete-session` → Permanently removes a session
+- `delete-workspace` → Removes workspace and all its sessions
+- `factory-reset` → Complete wipe for clean slate
 
 ---
 
