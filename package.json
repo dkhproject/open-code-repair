@@ -1,28 +1,50 @@
 {
   "name": "open-code-repair",
   "version": "1.0.0",
-  "description": "Cross-platform maintenance tool for Open Code desktop app",
+  "description": "Cross-platform maintenance and repair tool for Open Code desktop app. Fixes stuck sessions, workspace issues, cache bloat, log accumulation, and orphaned data. Supports Windows, macOS, and Linux.",
   "main": "oc-repair.mjs",
   "bin": {
     "oc-repair": "./oc-repair.mjs"
   },
   "type": "module",
   "scripts": {
-    "test": "node --experimental-sqlite oc-repair.mjs version"
+    "test": "node --experimental-sqlite oc-repair.mjs version",
+    "doctor": "node --experimental-sqlite oc-repair.mjs doctor",
+    "fix": "node --experimental-sqlite oc-repair.mjs fix"
   },
   "keywords": [
     "open-code",
+    "opencode",
     "repair",
     "maintenance",
     "database",
     "sqlite",
-    "node:sqlite"
+    "node-sqlite",
+    "cli",
+    "troubleshooting",
+    "data-recovery",
+    "cache-cleaner",
+    "factory-reset",
+    "open code repair",
+    "open code fix",
+    "open code troubleshoot",
+    "open code optimizer",
+    "open code auto fix",
+    "open code error fix"
   ],
-  "author": "Open Code Repair contributors",
+  "author": "DKH Project <denniskumara123@gmail.com>",
   "license": "MIT",
   "engines": {
     "node": ">=22.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dkhproject/open-code-repair.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dkhproject/open-code-repair/issues"
+  },
+  "homepage": "https://github.com/dkhproject/open-code-repair#readme",
   "files": [
     "oc-repair.mjs",
     "OpenCodeRepair.ps1",
