@@ -115,7 +115,7 @@ oc-repair fix
 oc-repair delete-session --id ses_df6a5782effeS7iXoFgygK51xY
 oc-repair delete-workspace --workspace QzpcVXNlcnNc.1wf4p7a
 oc-repair factory-reset
-oc-repair restore --backup-path "C:\Users\me\AppData\Roaming\Open Design\oc-repair-backups\opencode\20261123-185526-manual"
+oc-repair restore --backup-path "C:\Users\me\AppData\Roaming\Open Code\oc-repair-backups\opencode\20261123-185526-manual"
 ```
 
 ---
@@ -149,9 +149,9 @@ This tool addresses all of the above:
 - Destructive commands ask for confirmation; `factory-reset` requires typing `RESET`.
 - `doctor`, `version`, and anything with `--dry-run` never modify data.
 - Backups live in:
-  - Windows: `%APPDATA%\Open Design\oc-repair-backups\opencode\`
-  - macOS: `~/Library/Application Support/Open Design/oc-repair-backups/opencode/`
-  - Linux: `~/.config/Open Design/oc-repair-backups/opencode/`
+  - Windows: `%APPDATA%\Open Code\oc-repair-backups\opencode\`
+  - macOS: `~/Library/Application Support/Open Code\oc-repair-backups\opencode\`
+  - Linux: `~/.config\Open Code\oc-repair-backups\opencode\`
 - Backups are **never** touched by `factory-reset`, so you can always restore.
 
 ---
