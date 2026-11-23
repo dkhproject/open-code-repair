@@ -1,0 +1,35 @@
+{
+  "name": "open-code-repair",
+  "version": "1.0.0",
+  "description": "Cross-platform maintenance tool for Open Code desktop app",
+  "main": "oc-repair.mjs",
+  "bin": {
+    "oc-repair": "./oc-repair.mjs"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-sqlite oc-repair.mjs version"
+  },
+  "keywords": [
+    "open-code",
+    "repair",
+    "maintenance",
+    "database",
+    "sqlite",
+    "node:sqlite"
+  ],
+  "author": "Open Code Repair contributors",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "files": [
+    "oc-repair.mjs",
+    "OpenCodeRepair.ps1",
+    "OpenCodeRepair.cmd",
+    "lib/oc-data.mjs",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ]
+}
